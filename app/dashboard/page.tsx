@@ -39,7 +39,6 @@ const { data:task }=
    supabase,
    user.id
  )
- console.log(task)
 
 
 if(profile.role==="ADMIN"){

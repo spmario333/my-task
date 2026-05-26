@@ -24,17 +24,17 @@ export async function completeTaskAction(
    throw new Error("Task not found")
  }
 
- if(task.status!=="PENDING"){
+ if(task.status!=="EMPLOYEE_DONE"){
    throw new Error("Task inválida")
  }
 
- const isPersonalTask =
-  task.created_by === task.assigned_to
+if(task.created_by === task.assigned_to){
 
- const nextStatus =
-  isPersonalTask
-   ? "ARCHIVED"
-   : "EMPLOYEE_DONE"
+    throw new Error("Las tareas personales no requieren aprobacion")
+}
+
+ const nextStatus = "ARCHIVED"
+  
 
  return await updateTaskStatus(
    supabase,
