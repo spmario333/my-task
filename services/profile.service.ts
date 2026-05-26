@@ -1,6 +1,8 @@
+
+
 export async function getProfile(
-    supabase,
-    userId
+    supabase:any,
+    userId : string
 ) {
     return await supabase
         .from("profiles")

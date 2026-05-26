@@ -1,6 +1,6 @@
 "use client"
 import { createClient } from "@/lib/supabase/client";
-import {  useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -59,13 +59,18 @@ export function LoginRegister() {
                 console.error(error)
             } else {
                 if (data.user) {
-                    await supabase
-                        .from("profiles")
-                        .insert({
-                            id: data.user.id,
-                            email: data.user.email,
-                            role: "EMPLOYEE"
-                        })
+
+                    const { error: profileError } =
+                        await supabase
+                            .from("profiles")
+                            .insert({
+                                id: data.user.id,
+                                email: data.user.email,
+                                role: "EMPLOYEE"
+                            })
+
+                    console.log(profileError)
+
                 }
                 console.log(data + 'se ha registrado ')
                 Swal.fire({
