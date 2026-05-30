@@ -3,7 +3,7 @@
 import { createClient } from "@/lib/supabase/server"
 import { getTaskById, updateTaskStatus } from "@/services/task.service"
 
-export async function completeTaskAction(
+export async function archiveTaskAction(
  taskId:string
 ){
 
